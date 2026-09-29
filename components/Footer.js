@@ -11,7 +11,7 @@ export default function Footer() {
              <>
                <Image
                 className="brand-logo-dark"
-                src="/assets/images/logo/main-logo.svg"
+                src="/assets/images/logo/ibc-logo.svg"
                 alt="IBC Studio Logo"
                 width={265}
                 height={136}
@@ -20,7 +20,7 @@ export default function Footer() {
               />
                <Image
                 className="brand-logo-light"
-                src="/assets/images/logo/main-logo-light.svg"
+                src="/assets/images/logo/ibc-logo-light.svg"
                 alt="IBC Studio Logo"
                 width={265}
                 height={136}

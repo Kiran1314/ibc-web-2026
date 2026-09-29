@@ -74,28 +74,26 @@ export default function Header() {
   return (
     <header id="hdr">
          
-      <Link   href="/">
+      <Link className="header-brand" href="/" aria-label="IBC Studio home">
      
        <>
          <Image
             className="brand-logo-dark"
-            src="/assets/images/logo/main-logo.svg"
+            src="/assets/images/logo/ibc-logo.svg"
             alt="IBC Studio Logo"
-            width={130}
-            height={67}
+            width={2000}
+            height={1033}
             priority={true}
             unoptimized
-            style={{ width: '130px', height: '67px', maxWidth: '100%', objectFit: 'contain' }}
           />
          <Image
             className="brand-logo-light"
-            src="/assets/images/logo/main-logo-light.svg"
+            src="/assets/images/logo/ibc-logo-light.svg"
             alt="IBC Studio Logo"
-            width={130}
-            height={67}
+            width={2000}
+            height={1033}
             priority={true}
             unoptimized
-            style={{ width: '130px', height: '67px', maxWidth: '100%', objectFit: 'contain' }}
           />
        </>
        

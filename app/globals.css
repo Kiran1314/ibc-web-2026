@@ -9,6 +9,8 @@ h1,h2,h3,h4,h5{font-family:'Red Hat Display',sans-serif;font-weight:700;line-hei
 header{position:fixed;top:0;left:0;right:0;z-index:1000;height:70px;background:rgba(7,8,10,.98);border-bottom:1px solid rgba(147,196,179,.2);box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;align-items:center;padding:0 40px;justify-content:space-between}
 body.home-hero-top header{background:rgba(13,18,18,.98);border-bottom:1px solid rgba(147,196,179,.2)}
 .logo{display:flex;align-items:center;gap:11px;cursor:pointer;text-decoration:none;flex-shrink:0}
+.header-brand{position:relative;display:block;flex:0 0 150px;width:150px;height:70px;overflow:hidden}
+.header-brand .brand-logo-dark,.header-brand .brand-logo-light{position:absolute;inset:0;width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center;display:block}
 .brand-logo-light{display:none!important}
 html.theme-light .brand-logo-dark,body.theme-light .brand-logo-dark{display:none!important}
 html.theme-light .brand-logo-light,body.theme-light .brand-logo-light{display:block!important}
@@ -460,12 +462,16 @@ body.theme-light .ibc-home-hero,html.theme-light .ibc-home-hero{--hero-bg:#f6f8f
 .ibc-home-hero::after{background:linear-gradient(180deg,transparent 18%,rgba(var(--hero-bg-rgb),.55) 55%,var(--hero-bg) 92%)}
 .ibc-hero-copy{max-width:900px;padding:0 24px;margin:0 auto;text-align:center}
 @keyframes ibc-hero-loadup{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
-.ibc-hero-copy>*{opacity:0;animation:ibc-hero-loadup .8s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes ibc-hero-line-rise{from{transform:translate3d(0,110%,0)}to{transform:translate3d(0,0,0)}}
+.ibc-hero-copy>.ibc-hero-eyebrow,.ibc-hero-copy>p,.ibc-hero-copy>.ibc-hero-actions{opacity:0;animation:ibc-hero-loadup .8s cubic-bezier(.22,1,.36,1) forwards}
 .ibc-hero-copy>.ibc-hero-eyebrow{animation-delay:.08s}
-.ibc-hero-copy>h1{animation-delay:.2s}
-.ibc-hero-copy>p{animation-delay:.34s}
-.ibc-hero-copy>.ibc-hero-actions{animation-delay:.48s}
-.ibc-hero-gallery{opacity:0;animation:ibc-hero-loadup .9s cubic-bezier(.22,1,.36,1) .56s forwards}
+.ibc-hero-copy>p{animation-delay:.52s}
+.ibc-hero-copy>.ibc-hero-actions{animation-delay:.68s}
+.ibc-hero-copy>h1 .ibc-line>span{transform:translate3d(0,110%,0);animation:ibc-hero-line-rise .9s cubic-bezier(.22,1,.36,1) forwards}
+.ibc-hero-copy>h1 .ibc-line:nth-child(1)>span{animation-delay:.2s}
+.ibc-hero-copy>h1 .ibc-line:nth-child(2)>span{animation-delay:.32s}
+.ibc-hero-copy>h1 .ibc-line:nth-child(3)>span{animation-delay:.44s}
+.ibc-hero-gallery{opacity:0;animation:ibc-hero-loadup .9s cubic-bezier(.22,1,.36,1) .78s forwards}
 .ibc-hero-eyebrow{display:flex;justify-content:center;color:var(--sage);font-size:11.7px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
 .ibc-hero-copy h1{margin:clamp(26px,4.6vh,46px) 0 clamp(24px,4.4vh,44px);font-family:'Red Hat Display',Arial,sans-serif;font-size:clamp(38px,min(6.4vw,9.6vh),86px);font-weight:900;line-height:.95;letter-spacing:-.035em}
 .ibc-line{display:block;overflow:hidden;padding:.05em 0 .09em}
@@ -801,6 +807,7 @@ body.theme-light .wdummy-badge{background:rgba(255,255,255,.7)}
   .page,.spanel{animation:none!important}
   .reveal{opacity:1;transform:none!important;transition:none!important}
   .ibc-hero-copy>*,.ibc-hero-gallery{opacity:1!important;animation:none!important}
+  .ibc-hero-copy>h1 .ibc-line>span{transform:none!important}
   .ctrack{animation:none}
 
   .ibc-home-hero::before,.ibc-home-hero::after{animation:none}
