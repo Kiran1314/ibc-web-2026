@@ -189,7 +189,7 @@ export default function HomePage() {
             Complete media solutions designed to help businesses create professional, impactful, and meaningful content across every platform.
           </p>
           <div className="srv-grid">
-            <Go as="div" to="/services" className="srv-card reveal">
+            <Go as="div" to="/services#service-audio" className="srv-card reveal">
               <div className="srv-ic">
                 <svg width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8">
                   <path d="M9 18V5l12-2v13" />
@@ -207,7 +207,7 @@ export default function HomePage() {
                 Explore Service →
               </div>
             </Go>
-            <Go as="div" to="/services" className="srv-card reveal">
+            <Go as="div" to="/services#service-video" className="srv-card reveal">
               <div className="srv-ic">
                 <svg width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8">
                   <rect x="2" y="6" width="14" height="12" rx="2" />
@@ -224,7 +224,7 @@ export default function HomePage() {
                 Explore Service →
               </div>
             </Go>
-            <Go as="div" to="/services" className="srv-card reveal">
+            <Go as="div" to="/services#service-photo" className="srv-card reveal">
               <div className="srv-ic">
                 <svg width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8">
                   <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
@@ -241,7 +241,7 @@ export default function HomePage() {
                 Explore Service →
               </div>
             </Go>
-            <Go as="div" to="/services" className="srv-card reveal">
+            <Go as="div" to="/services#service-ai" className="srv-card reveal">
               <div className="srv-ic">
                 <svg width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8">
                   <circle cx="12" cy="12" r="3" />
@@ -258,7 +258,7 @@ export default function HomePage() {
                 Explore Service →
               </div>
             </Go>
-            <Go as="div" to="/services" className="srv-card reveal">
+            <Go as="div" to="/services#service-digital" className="srv-card reveal">
               <div className="srv-ic">
                 <svg width="22" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8">
                   <polyline points="16 18 22 12 16 6" />

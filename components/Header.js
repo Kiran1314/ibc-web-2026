@@ -76,20 +76,28 @@ export default function Header() {
          
       <Link   href="/">
      
-       <Image 
-            src="/assets/images/logo/main-logo.svg" 
-            alt="IBC Studio Logo" 
-            width={130}          
-            height={67}         
-            priority={true}      
-            unoptimized          
-            style={{
-              width: '130px',    
-              height: '67px',    
-              maxWidth: '100%',  
-              display: 'block'   
-            }}
+       <>
+         <Image
+            className="brand-logo-dark"
+            src="/assets/images/logo/main-logo.svg"
+            alt="IBC Studio Logo"
+            width={130}
+            height={67}
+            priority={true}
+            unoptimized
+            style={{ width: '130px', height: '67px', maxWidth: '100%', objectFit: 'contain' }}
           />
+         <Image
+            className="brand-logo-light"
+            src="/assets/images/logo/main-logo-light.svg"
+            alt="IBC Studio Logo"
+            width={130}
+            height={67}
+            priority={true}
+            unoptimized
+            style={{ width: '130px', height: '67px', maxWidth: '100%', objectFit: 'contain' }}
+          />
+       </>
        
       </Link>
       

@@ -8,18 +8,26 @@ export default function Footer() {
       <div className="ft-grid">
         <div className="ft-brand">
           <div className="logo" style={{ cursor: "default" }}>
-             <Image 
-              src="/assets/images/logo/main-logo.svg" 
-              alt="IBC Studio Logo" 
-              width={900}          // 3x base resolution for Retina displays
-              height={300}         // Proportional height
-              unoptimized          // Bypasses compression to ensure maximum sharpness
-              style={{
-                width: '265px',    // Enforces your exact 300px display width
-                height: 'auto',    // Maintains aspect ratio automatically
-                display: 'block'
-              }}
-            />
+             <>
+               <Image
+                className="brand-logo-dark"
+                src="/assets/images/logo/main-logo.svg"
+                alt="IBC Studio Logo"
+                width={265}
+                height={136}
+                unoptimized
+                style={{ width: '265px', height: '136px', maxWidth: '100%', objectFit: 'contain', display: 'block' }}
+              />
+               <Image
+                className="brand-logo-light"
+                src="/assets/images/logo/main-logo-light.svg"
+                alt="IBC Studio Logo"
+                width={265}
+                height={136}
+                unoptimized
+                style={{ width: '265px', height: '136px', maxWidth: '100%', objectFit: 'contain', display: 'block' }}
+              />
+             </>
           </div>
           <p>
             Dubai-based media production house delivering audio, video, photography, AI-powered content, and digital media solutions with over 19 years of experience.

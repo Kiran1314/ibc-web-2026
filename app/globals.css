@@ -9,6 +9,9 @@ h1,h2,h3,h4,h5{font-family:'Red Hat Display',sans-serif;font-weight:700;line-hei
 header{position:fixed;top:0;left:0;right:0;z-index:1000;height:70px;background:rgba(7,8,10,.98);border-bottom:1px solid rgba(147,196,179,.2);box-shadow:0 10px 30px rgba(0,0,0,.18);display:flex;align-items:center;padding:0 40px;justify-content:space-between}
 body.home-hero-top header{background:rgba(13,18,18,.98);border-bottom:1px solid rgba(147,196,179,.2)}
 .logo{display:flex;align-items:center;gap:11px;cursor:pointer;text-decoration:none;flex-shrink:0}
+.brand-logo-light{display:none!important}
+html.theme-light .brand-logo-dark,body.theme-light .brand-logo-dark{display:none!important}
+html.theme-light .brand-logo-light,body.theme-light .brand-logo-light{display:block!important}
 .logo-txt{font-family:'Red Hat Display',sans-serif;font-weight:900;font-size:19px;letter-spacing:.08em;color:#fff;text-transform:uppercase;line-height:1;white-space:nowrap;flex-shrink:0}
 .logo-txt::after{content:'';display:block;width:38px;height:2px;background:linear-gradient(90deg,var(--sage),transparent);margin-top:6px;border-radius:2px}
 .logo-txt em{color:var(--sage);font-style:normal;font-weight:900}
@@ -340,6 +343,8 @@ body.menu-open{overflow:hidden}
 .interactive-card{cursor:pointer}
 .interactive-card[role="link"]{outline-offset:5px}
 /* Light theme */
+html.theme-light svg{filter:brightness(.72) saturate(.95)}
+html.theme-light #pg-intel svg,html.theme-light .chat-fab svg,html.theme-light .wv-play svg,html.theme-light .wphoto-close svg,html.theme-light .wphoto-nav svg,html.theme-light .wlb-close svg,html.theme-light .about-video-sound svg{filter:none}
 body.theme-light{--bg:#e7eeea;--bg2:#f1f5f3;--bg3:#dce7e2;--panel:#f1f5f3;--border:rgba(39,102,79,.2);--border-strong:rgba(39,102,79,.44);--dim:rgba(22,42,35,.68);--mid:rgba(22,42,35,.84);--shadow:0 18px 48px rgba(20,48,38,.1);color:#172a25}
 body,header,footer,.srv-card,.tcard,.bcard,.witem,.cform,.cpc,.fcard,.sitem,.vidph,.chat-panel,.chat-msg,.chat-chip,.fg input,.fg select,.fg textarea,.theme-toggle,nav a,.btn-o{transition:background-color .28s ease,color .28s ease,border-color .28s ease,box-shadow .28s ease,opacity .82s cubic-bezier(.16,1,.3,1),transform .82s cubic-bezier(.16,1,.3,1)}
 body.theme-light header,body.theme-light.home-hero-top header{background:rgba(234,242,237,.97);border-bottom-color:rgba(39,102,79,.18);box-shadow:0 8px 24px rgba(20,48,38,.08)}
@@ -454,6 +459,13 @@ body.theme-light .ibc-home-hero,html.theme-light .ibc-home-hero{--hero-bg:#f6f8f
   conic-gradient(from 197deg at 86% -20%,transparent 0deg,rgba(var(--beam-b),calc(var(--beam-peak)*.22)) 2.5deg,rgba(var(--beam-b),var(--beam-peak)) 7deg,rgba(var(--beam-b),var(--beam-peak)) 15deg,rgba(var(--beam-b),calc(var(--beam-peak)*.22)) 19.5deg,transparent 22deg)}
 .ibc-home-hero::after{background:linear-gradient(180deg,transparent 18%,rgba(var(--hero-bg-rgb),.55) 55%,var(--hero-bg) 92%)}
 .ibc-hero-copy{max-width:900px;padding:0 24px;margin:0 auto;text-align:center}
+@keyframes ibc-hero-loadup{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+.ibc-hero-copy>*{opacity:0;animation:ibc-hero-loadup .8s cubic-bezier(.22,1,.36,1) forwards}
+.ibc-hero-copy>.ibc-hero-eyebrow{animation-delay:.08s}
+.ibc-hero-copy>h1{animation-delay:.2s}
+.ibc-hero-copy>p{animation-delay:.34s}
+.ibc-hero-copy>.ibc-hero-actions{animation-delay:.48s}
+.ibc-hero-gallery{opacity:0;animation:ibc-hero-loadup .9s cubic-bezier(.22,1,.36,1) .56s forwards}
 .ibc-hero-eyebrow{display:flex;justify-content:center;color:var(--sage);font-size:11.7px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
 .ibc-hero-copy h1{margin:clamp(26px,4.6vh,46px) 0 clamp(24px,4.4vh,44px);font-family:'Red Hat Display',Arial,sans-serif;font-size:clamp(38px,min(6.4vw,9.6vh),86px);font-weight:900;line-height:.95;letter-spacing:-.035em}
 .ibc-line{display:block;overflow:hidden;padding:.05em 0 .09em}
@@ -788,6 +800,7 @@ body.theme-light .wdummy-badge{background:rgba(255,255,255,.7)}
   html{scroll-behavior:auto}
   .page,.spanel{animation:none!important}
   .reveal{opacity:1;transform:none!important;transition:none!important}
+  .ibc-hero-copy>*,.ibc-hero-gallery{opacity:1!important;animation:none!important}
   .ctrack{animation:none}
 
   .ibc-home-hero::before,.ibc-home-hero::after{animation:none}
