@@ -169,7 +169,7 @@ export default function BlogPost({ params }) {
                     fontSize: '14px',
                   }}
                 >
-                  <span>August 2026</span>
+                  <span>October 2026</span>
                   <span>7 min read</span>
                   <span>IBC Studio Editorial</span>
                 </div>

@@ -114,7 +114,7 @@ export default function BlogPost({ params }) {
                 </p>
 
                 <div className="article-meta" style={metaStyle}>
-                  <span>August 2026</span>
+                  <span>October 2026</span>
                   <span>7 min read</span>
                   <span>IBC Studio Editorial</span>
                 </div>

@@ -417,7 +417,7 @@ export default function HomePage() {
             </Go>
           </div>
         <div className="bgrid">
-  <Go as="div" to="/blogs/ai-video-storytelling-2026" className="bcard reveal">
+  <Go as="div" to="/blogs-post/ai-video-storytelling-2026" className="bcard reveal">
     <div className="bthumb" style={{ position: 'relative', overflow: 'hidden', background: "linear-gradient(135deg,#111,#1a1a2e 55%,#161e2e)" }}>
       <Image 
         src="assets/images/blog/blog1.webp" 
@@ -441,7 +441,7 @@ export default function HomePage() {
       </p>
       <div className="bmeta">
         <span className="bdate">
-          August 2026
+          October 2026
         </span>
         <span className="brm">
           Read More →
@@ -450,7 +450,7 @@ export default function HomePage() {
     </div>
   </Go>
 
-  <Go as="div" to="/blogs/the-power-of-cinematic-corporate-films" className="bcard reveal">
+  <Go as="div" to="/blogs-post/the-power-of-cinematic-corporate-films" className="bcard reveal">
     <div className="bthumb" style={{ position: 'relative', overflow: 'hidden', background: "linear-gradient(135deg,#111,#1a1a2e 55%,#161e2e)" }}>
       <Image 
         src="assets/images/blog/blog2.webp" 
@@ -473,7 +473,7 @@ export default function HomePage() {
       </p>
       <div className="bmeta">
         <span className="bdate">
-          August 2026
+          October 2026
         </span>
         <span className="brm">
           Read More →
@@ -482,7 +482,7 @@ export default function HomePage() {
     </div>
   </Go>
 
-  <Go as="div" to="/blogs/why-your-ivr-voice-matters-more-than-you-think" className="bcard reveal">
+  <Go as="div" to="/blogs-post/why-your-ivr-voice-matters-more-than-you-think" className="bcard reveal">
     <div className="bthumb" style={{ position: 'relative', overflow: 'hidden', background: "linear-gradient(135deg,#111,#1a1a2e 55%,#161e2e)" }}>
       <Image 
         src="assets/images/blog/blog3.webp" 
@@ -505,7 +505,7 @@ export default function HomePage() {
       </p>
       <div className="bmeta">
         <span className="bdate">
-          August 2026
+          October 2026
         </span>
         <span className="brm">
           Read More →

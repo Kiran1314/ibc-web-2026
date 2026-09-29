@@ -29,7 +29,7 @@ const archiveBlogs = [
     tag: 'Photography',
     title: 'What Makes a Great Product Photograph',
     desc: 'The technical and creative decisions that separate average shots from ones that actually sell.',
-    date: 'Aug 2026',
+    date: 'October 2026',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FWhat%20Makes%20a%20Great%20Product%20Photograph.webp?alt=media&token=4a22068a-f2f9-4b3d-b690-3a0ceef846a2',
   },
   {
@@ -38,7 +38,7 @@ const archiveBlogs = [
     tag: 'Localization',
     title: 'Multilingual Media: Why Arabic First Matters in the UAE',
     desc: 'The cultural and commercial case for leading with Arabic in your media production strategy.',
-    date: 'Aug 2026',
+    date: 'October 2026',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FMultilingual%20Media%20Why%20Arabic%20First%20Matters%20in%20the%20UAE.webp?alt=media&token=5b257d61-e35e-4972-83fb-c6002df284e3',
   },
   {
@@ -47,7 +47,7 @@ const archiveBlogs = [
     tag: 'IBC Intelligence',
     title: 'Brand Listening: How AI is Changing Market Research',
     desc: 'How real-time AI social listening is transforming how brands understand their audience.',
-    date: 'Aug 2026',
+    date: 'October 2026',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FBrand%20Listening%20How%20AI%20is%20Changing%20Market%20Research.webp?alt=media&token=d4fc52c9-9b50-4537-ae26-d5678260a2c2',
   },
   {
@@ -56,7 +56,7 @@ const archiveBlogs = [
     tag: 'Drone',
     title: 'The Rise of Aerial Cinematography in the Gulf',
     desc: 'How drone technology is reshaping real estate, events, and infrastructure storytelling in the UAE.',
-    date: 'Aug 2026',
+    date: 'October 2026',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FThe%20Rise%20of%20Aerial%20Cinematography%20in%20the%20Gulf-clean.webp?alt=media&token=9afb33e6-4a3b-40bf-8b89-385bb00108ca',
   },
   {
@@ -65,7 +65,7 @@ const archiveBlogs = [
     tag: 'Digital',
     title: 'E-Learning in 2026: Platforms That Actually Work',
     desc: 'Design principles behind e-learning platforms that employees actually use and enjoy.',
-    date: 'Aug 2026',
+    date: 'October 2026',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FE-Learning%20in%202026%20Platforms%20That%20Actually%20Work-clean.webp?alt=media&token=8c918a22-0dee-493c-b894-707dbcd72e2d',
   },
   {
@@ -74,7 +74,7 @@ const archiveBlogs = [
     tag: 'Audio',
     title: 'Jingles Are Back — Why Brands Are Investing Again',
     desc: 'The surprising resurgence of brand audio identity and what it means for your marketing.',
-    date: 'Aug 2026',
+    date: 'October 2026',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FJingles%20Are%20Back%20%E2%80%94%20Why%20Brands%20Are%20Investing%20Again.webp?alt=media&token=279e5fcf-f00a-4e4c-8e6c-3c52c252e6ee',
   },
 ];
@@ -88,7 +88,7 @@ const featuredArticle = {
   image: featuredImage,
   title: 'How AI Video is Redefining Brand Storytelling in 2026',
   tag: 'Featured · AI Production',
-  date: 'Aug 2026 · 8 min read',
+  date: 'October 2026 · 8 min read',
   desc: 'UAE brands are leveraging AI-generated video to scale content production without sacrificing quality. The shift is faster than most expected.',
 };
 const secondaryFeaturedArticles = [
@@ -97,14 +97,14 @@ const secondaryFeaturedArticles = [
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FThe%20Power%20of%20Cinematic%20Corporate%20Films.webp?alt=media&token=a1db3cf8-cc01-4807-a3e1-d27f40cf0204',
     title: 'The Power of Cinematic Corporate Films',
     tag: 'Video Production',
-    date: 'Aug 2026',
+    date: 'October 2026',
   },
   {
     url: '/blog-post/why-your-ivr-voice-matters-more-than-you-think',
     image: 'https://firebasestorage.googleapis.com/v0/b/ibc-studio.appspot.com/o/Images%2FBlogpost_thumb%2FWhy%20Your%20IVR%20Voice%20Matters%20More%20Than%20You%20Think.webp?alt=media&token=58b89f68-304a-48bd-8221-cfbdcb4091e3',
     title: 'Why Your IVR Voice Matters More Than You Think',
     tag: 'Audio',
-    date: 'Aug 2026',
+    date: 'October 2026',
   },
 ];
 
