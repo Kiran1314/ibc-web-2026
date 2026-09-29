@@ -417,7 +417,7 @@ export default function HomePage() {
             </Go>
           </div>
         <div className="bgrid">
-  <Go as="div" to="/blogs-post/ai-video-storytelling-2026" className="bcard reveal">
+  <Go as="div" to="/blog-post/ai-video-storytelling-2026" className="bcard reveal">
     <div className="bthumb" style={{ position: 'relative', overflow: 'hidden', background: "linear-gradient(135deg,#111,#1a1a2e 55%,#161e2e)" }}>
       <Image 
         src="assets/images/blog/blog1.webp" 
@@ -450,7 +450,7 @@ export default function HomePage() {
     </div>
   </Go>
 
-  <Go as="div" to="/blogs-post/the-power-of-cinematic-corporate-films" className="bcard reveal">
+  <Go as="div" to="/blog-post/the-power-of-cinematic-corporate-films" className="bcard reveal">
     <div className="bthumb" style={{ position: 'relative', overflow: 'hidden', background: "linear-gradient(135deg,#111,#1a1a2e 55%,#161e2e)" }}>
       <Image 
         src="assets/images/blog/blog2.webp" 
@@ -482,7 +482,7 @@ export default function HomePage() {
     </div>
   </Go>
 
-  <Go as="div" to="/blogs-post/why-your-ivr-voice-matters-more-than-you-think" className="bcard reveal">
+  <Go as="div" to="/blog-post/why-your-ivr-voice-matters-more-than-you-think" className="bcard reveal">
     <div className="bthumb" style={{ position: 'relative', overflow: 'hidden', background: "linear-gradient(135deg,#111,#1a1a2e 55%,#161e2e)" }}>
       <Image 
         src="assets/images/blog/blog3.webp" 
