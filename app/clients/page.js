@@ -3,8 +3,46 @@ import ClientGrid from '@/components/ClientGrid';
 import PageEffects from '@/components/PageEffects';
 
 export const metadata = {
-  title: "Our Clients - IBC Studio",
-  description: "IBC Studio has produced media for 3,000+ satisfied clients across the UAE, from government entities to leading real estate, finance and aviation brands.",
+  title: 'Our Clients & Partners | Corporate Media Success',
+  description: 'See how top brands and corporate enterprises leverage our high-end audio recording setups and media production capabilities to drive global engagement.',
+  keywords: 'corporate video production company in dubai, corporate video company in uae',
+  openGraph: {
+    type: 'website',
+    url: 'https://www.ibcstudio.com/clients',
+    title: 'Our Clients & Partners | Corporate Media Success',
+    description: 'See how top brands and corporate enterprises leverage our high-end audio recording setups and media production capabilities to drive global engagement.',
+    siteName: 'IBC Studio',
+    locale: 'en_US',
+  },
+  other: {
+    'application/ld+json': JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "IBC Studio",
+      "image": "https://www.ibcstudio.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.9a5f742b.png&w=640&q=75",
+      "url": "https://www.ibcstudio.com/clients",
+      "telephone": "+971552912810",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "IBN Batuta Gate Office, P.O. Box: 120472, Dubai, UAE",
+        "addressLocality": "Dubai",
+        "postalCode": "25314",
+        "addressCountry": "AE"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+         "https://www.facebook.com/profile.php?id=61575559854140",
+         "https://www.instagram.com/ibcstudio_uae/",
+         "https://www.linkedin.com/company/ibcstudiouae/",
+         "https://www.youtube.com/@ibcstudiome"
+      ]
+    })
+  }
 };
 
 export default function ClientsPage() {

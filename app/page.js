@@ -8,13 +8,50 @@ import PageEffects from '@/components/PageEffects';
 import Image from 'next/image';
 
 export const metadata = {
-  title: "IBC Studio | Media Production House in Dubai, UAE",
-  description: "IBC Studio is a Dubai media production house with 19+ years of experience in audio, video, photography, AI-powered content and digital solutions for UAE brands.",
+  title: 'Audio-Video Production House Dubai | IBC Studio',
+  description: 'Discover the best audio-video production house in Dubai. We offer top-notch digital media creation, professional audio recording, and production services.',
+  keywords: [
+     'audio video company in dubai', 'production house in dubai', 'media production company in dubai', 'best production company in dubai'
+  ],
   openGraph: {
-    type: "website",
-    title: "IBC Studio | Media Production House in Dubai, UAE",
-    description: "Audio, video, photography, AI production and digital solutions from Dubai's full-service media production house.",
+    type: 'website',  
+    url: 'https://www.ibcstudio.com/',  
+    title: 'Audio-Video Production House Dubai | IBC Studio',  
+    description: 'Discover the best audio-video production house in Dubai. We offer top-notch digital media creation, professional audio recording, and production services',
+    siteName: 'IBC Studio',  
+    locale: 'en_US',  
   },
+  other: {
+    'application/ld+json': JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "IBC Studio",
+      "image": "https://www.ibcstudio.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FLogo.9a5f742b.png&w=640&q=75",
+      "url": "https://www.ibcstudio.com",
+      "telephone": "+971552912810",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "IBN Batuta Gate Office, P.O. Box: 120472, Dubai, UAE",
+        "addressLocality": "Dubai",
+        "postalCode": "25314",
+        "addressCountry": "AE"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "20:00"
+      },
+      "sameAs": [
+         "https://www.facebook.com/profile.php?id=61575559854140",
+         "https://www.instagram.com/ibcstudio_uae/",
+         "https://www.linkedin.com/company/ibcstudiouae/",
+         "https://www.youtube.com/@ibcstudiome" 
+      ]
+    })
+  }
 };
 
 export const viewport = { themeColor: "#0d1212" };
@@ -277,9 +314,15 @@ export default function HomePage() {
             </Go>
             <Go as="div" to="/ibc-intelligence" className="srv-card reveal">
               <div className="srv-ic">
-               <div className="logo" style={{ cursor: 'default' }} >
-                    <Image src="/assets/images/logo/intel2.webp" alt="IBC Studio Logo" width={120} height={50} style={{ height: '50px', width: 'auto', objectFit: 'contain', display: 'block' }} />
-                  </div>
+               <div className="logo" style={{ cursor: 'default', position: 'relative', height: '50px', width: '150px' }} >
+                  <Image 
+                    src="/assets/images/logo/intel2.webp" 
+                    alt="IBC Studio Logo" 
+                    fill
+                    sizes="150px"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
 
               </div>
               <h3>

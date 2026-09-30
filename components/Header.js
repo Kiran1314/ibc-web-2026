@@ -85,6 +85,7 @@ export default function Header() {
             height={1033}
             priority={true}
             unoptimized
+            fetchPriority="high" 
           />
          <Image
             className="brand-logo-light"
@@ -94,6 +95,7 @@ export default function Header() {
             height={1033}
             priority={true}
             unoptimized
+            fetchPriority="high" 
           />
        </>
        

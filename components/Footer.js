@@ -17,6 +17,7 @@ export default function Footer() {
                 height={136}
                 unoptimized
                 style={{ width: '265px', height: '136px', maxWidth: '100%', objectFit: 'contain', display: 'block' }}
+                fetchPriority="high" 
               />
                <Image
                 className="brand-logo-light"
@@ -26,6 +27,7 @@ export default function Footer() {
                 height={136}
                 unoptimized
                 style={{ width: '265px', height: '136px', maxWidth: '100%', objectFit: 'contain', display: 'block' }}
+                fetchPriority="high" 
               />
              </>
           </div>

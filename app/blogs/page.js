@@ -152,6 +152,36 @@ function SectionLabel({ children }) {
 export default function BlogsPage() {
   return (
     <>
+    <title>Insights & Trends: Pro Tech, AI & Video Media Hub</title>
+
+      <meta
+        name="description"
+        content="Stay ahead of the curve with deep-dives on industry trends: local AI video automation, Abu Dhabi media markets, and premium audio recording studio setups."
+      />
+
+      <meta
+        name="keywords"
+        content="video production companies in abu dhabi, corporate video in dubai, ai video production uae, media production trends abu dhabi, audio recording studios dubai, corporate video production uae, ai video automation dubai, media production insights uae"
+      />
+
+      <meta property="og:type" content="website" />
+
+      <meta
+        property="og:url"
+        content="https://www.ibcstudio.com/blogs"
+      />
+
+      <meta
+        property="og:title"
+        content="Insights & Trends: Pro Tech, AI & Video Media Hub"
+      />
+
+      <meta
+        property="og:description"
+        content="Stay ahead of the curve with deep-dives on industry trends: local AI video automation, Abu Dhabi media markets, and premium audio recording studio setups."
+      />
+
+      <meta property="og:site_name" content="IBC Studio" />
       <div className="page active" id="pg-blogs">
         <main className="pw" id="main-content">
           <div className="sec reveal" style={{ paddingTop: '130px', paddingBottom: '36px' }}>
