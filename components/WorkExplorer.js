@@ -1,18 +1,15 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, useTransition } from 'react';
 import { createPortal } from 'react-dom';
 import { filters, tagBars, items, placeholderIcons } from '@/lib/workData';
 import { audioCategories, audioLanguages, audioTracksData } from '@/lib/audiotracks';
 import { photographyData } from '@/lib/photographyData';
 
-/* Work page: category tabs + video tag filter + "load more", sharing one visibility pass.
-   Audio has an extra tier (Categories vs Languages) above its own tag pills, and — since it has
-   more placeholder items than any other category — is left out of the "All Work" aggregate. */
-
 const PAGE_SIZE = 12;
 const START = { cat: 'all', tag: 'all', audioType: 'categories' };
 const toFilterValue = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 const audioItems = audioTracksData.map((track) => {
   const label = track.category || track.language;
   return {
@@ -26,6 +23,7 @@ const audioItems = audioTracksData.map((track) => {
     trackId: track.id,
   };
 });
+
 const photographyItems = photographyData.map((category) => ({
   c: 'photo',
   tags: toFilterValue(category.label),
@@ -36,6 +34,7 @@ const photographyItems = photographyData.map((category) => ({
   images: category.images,
   photoId: category.id,
 }));
+
 const workItems = [...items.filter((item) => item.c !== 'audio' && item.c !== 'photo'), ...photographyItems, ...audioItems];
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,7 +46,6 @@ function matches(item, { cat, tag, audioType }) {
   return matchesCat && matchesAudioType && matchesTag;
 }
 
-// Which items are on screen for a given filter + page limit, in DOM order.
 function computeVisible(filter, limit) {
   let eligible = 0;
   const visible = workItems.map((item) => {
@@ -152,14 +150,14 @@ function AudioMiniPlayer({ item }) {
       <button className="waudio-volume" type="button" onClick={toggleMute} aria-label={isMuted ? 'Unmute' : 'Mute'} title={isMuted ? 'Unmute' : 'Mute'}>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M4 10v4h4l5 4V6l-5 4H4z" />
-          {isMuted ? <path d="m16 9 5 6m0-6-5 6" /> : <path d="M16 9a4 4 0 0 1 0 6m2-9a7 7 0 0 1 0 12" />}
+          {isMuted ? <path d="m16 9 5 6m0-6-5 6" /> : <path d="M16 9a4 4 0 0 1 0 12" />}
         </svg>
       </button>
     </div>
   );
 }
 
-function WorkItem({ item, hidden, onPlay, onGallery, itemRef }) {
+function WorkItem({ item, hidden, onPlay, onGallery, itemRef, isPriority }) {
   const dataAttrs = { 'data-c': item.c, 'data-tags': item.tags };
   if (item.audiotype) dataAttrs['data-audiotype'] = item.audiotype;
   return (
@@ -173,7 +171,15 @@ function WorkItem({ item, hidden, onPlay, onGallery, itemRef }) {
           aria-label={`Play ${item.ytTitle} video`}
           onClick={() => onPlay(item.yt, item.ytTitle)}
         >
-          <img src={item.img} alt="" loading="lazy" decoding="async" width="320" height="180" />
+          <img 
+            src={item.img} 
+            alt="" 
+            loading={isPriority ? "eager" : "lazy"} 
+            fetchPriority={isPriority ? "high" : "auto"}
+            decoding="async" 
+            width="320" 
+            height="180" 
+          />
           <span className="wv-badges">
             {item.badges.map((badge) => (
               <span className="wbadge" key={badge}>
@@ -194,7 +200,15 @@ function WorkItem({ item, hidden, onPlay, onGallery, itemRef }) {
           aria-label={`Open ${item.title} photo gallery`}
           onClick={() => onGallery(item)}
         >
-          <img src={item.img} alt={item.title} loading="lazy" decoding="async" width="640" height="360" />
+          <img 
+            src={item.img} 
+            alt={item.title} 
+            loading={isPriority ? "eager" : "lazy"} 
+            fetchPriority={isPriority ? "high" : "auto"}
+            decoding="async" 
+            width="640" 
+            height="360" 
+          />
           <span className="wv-badges">
             <span className="wbadge">Photography</span>
           </span>
@@ -230,13 +244,12 @@ function WorkItem({ item, hidden, onPlay, onGallery, itemRef }) {
 }
 
 export default function WorkExplorer() {
-  // `ui` drives the buttons instantly; `applied` drives the grid, which swaps ~160ms later so the
-  // grid can fade out and back in (see switchView).
   const [ui, setUi] = useState(START);
   const [applied, setApplied] = useState({ ...START, limit: PAGE_SIZE });
   const [lightbox, setLightbox] = useState(null);
   const [gallery, setGallery] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const gridRef = useRef(null);
   const barRef = useRef(null);
@@ -247,6 +260,7 @@ export default function WorkExplorer() {
   const lastFocus = useRef(null);
   const popQueue = useRef(null);
   const timer = useRef(0);
+  const preloadedCategories = useRef(new Set());
 
   const { visible, eligible, shown } = computeVisible(applied, applied.limit);
 
@@ -255,7 +269,29 @@ export default function WorkExplorer() {
     return () => clearTimeout(timer.current);
   }, []);
 
-  // Keep the filter bar reachable by sticking it under the header while scrolling.
+  // Preload resources (audio / images) on category hover for instant load upon click
+  const handleCategoryHover = (cat) => {
+    if (preloadedCategories.current.has(cat)) return;
+    preloadedCategories.current.add(cat);
+
+    // Preload first few images/audio items matching this category
+    const matchingItems = workItems.filter(item => (cat === 'all' ? item.c !== 'audio' : item.c === cat)).slice(0, 4);
+    matchingItems.forEach(item => {
+      if (item.img) {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = item.img;
+        link.as = 'image';
+        document.head.appendChild(link);
+      }
+      if (item.audioUrl) {
+        const audio = new Audio();
+        audio.preload = 'metadata';
+        audio.src = item.audioUrl;
+      }
+    });
+  };
+
   useEffect(() => {
     const io = new IntersectionObserver(
       ([entry]) => barRef.current.classList.toggle('is-stuck', !entry.isIntersecting),
@@ -265,10 +301,6 @@ export default function WorkExplorer() {
     return () => io.disconnect();
   }, []);
 
-  // A sticky element's reserved flow-space stays at its natural (unstuck) position, so once
-  // scrolled past the stick point, newly-revealed content right after it (the sub-tag dropdown)
-  // renders already partly behind it. Snapping back to exactly the stick point right before the
-  // dropdown's height changes keeps that gap at zero, so it never appears clipped.
   const realignSticky = () => {
     if (barRef.current.classList.contains('is-stuck')) {
       window.scrollBy(0, Math.ceil(sentinelRef.current.getBoundingClientRect().top - 70));
@@ -280,29 +312,38 @@ export default function WorkExplorer() {
       apply();
       return;
     }
-    gridRef.current.classList.add('is-switching');
+    gridRef.current?.classList.add('is-switching');
     clearTimeout(timer.current);
     timer.current = setTimeout(() => {
       apply();
-      gridRef.current.classList.remove('is-switching');
-    }, 160);
+      gridRef.current?.classList.remove('is-switching');
+    }, 120); // Slightly tightened transition timeout for snappier feedback
   };
 
   const pickCategory = (cat) => {
     realignSticky();
     const next = { cat, tag: 'all', audioType: 'categories', limit: PAGE_SIZE };
     setUi(next);
-    switchView(() => setApplied(next));
+    startTransition(() => {
+      switchView(() => setApplied(next));
+    });
   };
+
   const pickTag = (tag) => {
     setUi((u) => ({ ...u, tag }));
-    switchView(() => setApplied((a) => ({ ...a, tag, limit: PAGE_SIZE })));
+    startTransition(() => {
+      switchView(() => setApplied((a) => ({ ...a, tag, limit: PAGE_SIZE })));
+    });
   };
+
   const pickAudioType = (audioType) => {
     realignSticky();
     setUi((u) => ({ ...u, audioType, tag: 'all' }));
-    switchView(() => setApplied((a) => ({ ...a, audioType, tag: 'all', limit: PAGE_SIZE })));
+    startTransition(() => {
+      switchView(() => setApplied((a) => ({ ...a, audioType, tag: 'all', limit: PAGE_SIZE })));
+    });
   };
+
   const loadMore = () => {
     const limit = applied.limit + PAGE_SIZE;
     if (!prefersReducedMotion()) {
@@ -312,6 +353,7 @@ export default function WorkExplorer() {
     }
     setApplied((current) => ({ ...current, limit }));
   };
+
   useLayoutEffect(() => {
     if (!popQueue.current) return;
     popQueue.current.forEach((index, order) => {
@@ -323,7 +365,6 @@ export default function WorkExplorer() {
     popQueue.current = null;
   }, [applied.limit]);
 
-  // Video lightbox
   const openLightbox = (id, title) => {
     lastFocus.current = document.activeElement;
     setLightbox({ id, title });
@@ -347,12 +388,14 @@ export default function WorkExplorer() {
       return { ...current, index };
     });
   };
+
   useEffect(() => {
     document.body.classList.toggle('wlb-open', !!lightbox || !!gallery);
     if (lightbox && closeRef.current) closeRef.current.focus();
     if (gallery && galleryCloseRef.current) galleryCloseRef.current.focus();
     return () => document.body.classList.remove('wlb-open');
   }, [lightbox, gallery]);
+
   useEffect(() => {
     if (!lightbox) return;
     const onKey = (e) => {
@@ -360,7 +403,8 @@ export default function WorkExplorer() {
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  });
+  }, [lightbox]);
+
   useEffect(() => {
     if (!gallery) return;
     const onKey = (event) => {
@@ -372,7 +416,6 @@ export default function WorkExplorer() {
     return () => document.removeEventListener('keydown', onKey);
   }, [gallery]);
 
-  // Which sub-filter pill is highlighted in a bar: its own selection while that bar is the one in use.
   const activeFor = (bar) => {
     if (bar.kind === 'type') return ui.audioType;
     const inUse = ui.cat === bar.for && (!bar.audiotype || bar.audiotype === ui.audioType);
@@ -391,6 +434,8 @@ export default function WorkExplorer() {
               id={f.id || undefined}
               aria-pressed={ui.cat === f.cat}
               onClick={() => pickCategory(f.cat)}
+              onMouseEnter={() => handleCategoryHover(f.cat)}
+              onFocus={() => handleCategoryHover(f.cat)}
             >
               {f.label}
             </button>
@@ -444,7 +489,7 @@ export default function WorkExplorer() {
           </div>
         );
       })}
-      <div className={`wgrid${ui.cat === 'audio' ? ' wgrid-audio' : ''}`} id="wgrid" ref={gridRef}>
+      <div className={`wgrid${ui.cat === 'audio' ? ' wgrid-audio' : ''}${isPending ? ' is-pending' : ''}`} id="wgrid" ref={gridRef}>
         {workItems.map((item, i) => (
           <WorkItem
             key={item.trackId || i}
@@ -452,6 +497,7 @@ export default function WorkExplorer() {
             hidden={!visible[i]}
             onPlay={openLightbox}
             onGallery={openGallery}
+            isPriority={i < 4}
             itemRef={(element) => {
               itemRefs.current[i] = element;
             }}
