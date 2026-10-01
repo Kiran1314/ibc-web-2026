@@ -72,25 +72,18 @@ export default function ChatWidget() {
         </p>
       </div>
     </div>
-      <div
+      <button
+        type="button"
         className="chat-fab"
         title="Chat with us on WhatsApp"
         onClick={() => setOpen((o) => !o)}
-        role="button"
-        tabIndex={0}
         aria-label="Open IBC Studio chat"
         aria-expanded={open}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setOpen((o) => !o);
-          }
-        }}
       >
         <svg viewBox="0 0 24 24">
           <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
         </svg>
-      </div>
+      </button>
     </>
   );
 }
