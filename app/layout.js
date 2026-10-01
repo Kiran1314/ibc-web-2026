@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
+import CookieConsent from '@/components/CookieConsent';
 
 const FONTS =
   'https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@400;500;600&display=swap';
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
+        <CookieConsent />
         <Header />
         {children}
         <Footer />

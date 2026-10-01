@@ -1,0 +1,7 @@
+Contact: mailto:info@ibcstudio.com
+Encryption: https://www.ibcstudio.com
+Acknowledgments: https://www.ibcstudio.com
+Preferred-Languages: en
+Policy: https://www.ibcstudio.com/privacy-policy
+Hiring: https://www.ibcstudio.com/contact
+Canonical: https://www.ibcstudio.com/security.txt
