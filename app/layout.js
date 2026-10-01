@@ -2,7 +2,6 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
-import CookieConsent from '@/components/CookieConsent';
 
 const FONTS =
   'https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800;900&family=Work+Sans:wght@400;500;600&display=swap';
@@ -21,6 +20,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG80W97DF7" />
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-YG80W97DF7');
+        ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href={FONTS} rel="stylesheet" />
@@ -34,7 +40,6 @@ export default function RootLayout({ children }) {
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
-        <CookieConsent />
         <Header />
         {children}
         <Footer />
