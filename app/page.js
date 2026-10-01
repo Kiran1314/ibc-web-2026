@@ -367,9 +367,7 @@ export default function HomePage() {
                       width: 'clamp(110px, 15vw, 200px)', 
                       height: 'clamp(110px, 15vw, 200px)', 
                       objectFit: 'contain',
-                      display: 'block',
-                      
-                      marginLeft: '400px'
+                      display: 'block'
                     }} 
                   />
                 </div>
