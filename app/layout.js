@@ -20,13 +20,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YG80W97DF7" />
-        <script dangerouslySetInnerHTML={{ __html: `
+       <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMS7QSYGCS"></script>
+        <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-YG80W97DF7');
-        ` }} />
+
+          gtag('config', 'G-EMS7QSYGCS');
+        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href={FONTS} rel="stylesheet" />
