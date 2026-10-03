@@ -11,6 +11,11 @@ const HEAD_SCRIPT = `try{if(localStorage.getItem('ibc-theme')==='light')document
 
 const BODY_SCRIPT = `try{if(localStorage.getItem('ibc-theme')==='light')document.body.classList.add('theme-light')}catch(e){}`;
 
+const ANALYTICS_SCRIPT = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EMS7QSYGCS');`;
+
 export const metadata = {
   title: 'IBC Studio',
   description: 'IBC Studio is a Dubai media production house.',
@@ -22,13 +27,7 @@ export default function RootLayout({ children }) {
       <head>
       
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMS7QSYGCS"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-EMS7QSYGCS');
-        </script>
+        <script dangerouslySetInnerHTML={{ __html: ANALYTICS_SCRIPT }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href={FONTS} rel="stylesheet" />
