@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-       <!-- Google tag (gtag.js) -->
+      
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMS7QSYGCS"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
