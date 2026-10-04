@@ -6,29 +6,27 @@ export async function POST(request) {
     const body = await request.json();
     const { firstName, lastName, email, phone, company, service, project } = body;
 
-    // Configure Hostinger SMTP
     const transporter = nodemailer.createTransport({
-  host: 'smtp.hostinger.com',
- port: 465,
-secure: true, // Must be false for 587
-  auth: {
-    user: 'info@ibcstudio.com',
-    pass: process.env.SMTP_PASSWORD // or your string while testing
-  },
-  // ADD THIS BLOCK:
-  tls: {
-    rejectUnauthorized: false 
-  }
-});
-    // HTML Email Template
+      host: 'smtp.hostinger.com',
+      port: 465,
+      secure: true, 
+      auth: {
+        user: 'info@ibcstudio.com',
+        pass: process.env.SMTP_PASSWORD // Ensure this is set in .env.local
+      },
+      tls: {
+        rejectUnauthorized: false // Helps prevent local ECONNRESET errors
+      }
+    });
+
     const mailOptions = {
-      from: 'info@ibcstudio.com', // Must match the authenticated user above
-      to: 'info@ibcstudio.com', // Where you want to receive the enquiry
-      replyTo: email, // Clicking "Reply" in your email client will reply to the customer
+      from: 'info@ibcstudio.com', 
+      to: 'info@ibcstudio.com', 
+      replyTo: email, 
       subject: `New ${service || 'Enquiry'} from ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eaeaea; border-radius: 8px;">
-          <h2 style="color: #333; margin-top: 0;">New Enquiry From Website</h2>
+          <h2 style="color: #333; margin-top: 0;">New Website Enquiry</h2>
           
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
