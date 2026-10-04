@@ -8,9 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^13.4.4",
     "next": "^16.3.6",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "react-google-recaptcha": "^3.1.0",
+    "react-toastify": "^11.1.0"
   }
 }

@@ -60,6 +60,8 @@ export default function ContactPage() {
             <p className="ph-desc">
               Whether you have a brief ready or just an idea, we'd love to hear from you. Our team will respond within 24 hours.
             </p>
+            
+            {/* Location */}
             <div className="cdet reveal">
               <div className="cion">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -68,14 +70,12 @@ export default function ContactPage() {
                 </svg>
               </div>
               <div className="ctxt">
-                <h4>
-                  Location
-                </h4>
-                <p>
-                  Dubai, United Arab Emirates
-                </p>
+                <h4>Location</h4>
+                <p>Dubai, United Arab Emirates</p>
               </div>
             </div>
+
+            {/* Phone */}
             <div className="cdet reveal">
               <div className="cion">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -83,14 +83,12 @@ export default function ContactPage() {
                 </svg>
               </div>
               <div className="ctxt">
-                <h4>
-                  Phone
-                </h4>
-                <p>
-                  +971 55 291 2810
-                </p>
+                <h4>Phone</h4>
+                <p>+971 55 291 2810</p>
               </div>
             </div>
+
+            {/* Email */}
             <div className="cdet reveal">
               <div className="cion">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -99,14 +97,12 @@ export default function ContactPage() {
                 </svg>
               </div>
               <div className="ctxt">
-                <h4>
-                  Email
-                </h4>
-                <p>
-                  info@ibcstudio.com
-                </p>
+                <h4>Email</h4>
+                <p>info@ibcstudio.com</p>
               </div>
             </div>
+
+            {/* WhatsApp */}
             <div className="cdet reveal">
               <div className="cion">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -114,53 +110,39 @@ export default function ContactPage() {
                 </svg>
               </div>
               <div className="ctxt">
-                <h4>
-                  WhatsApp
-                </h4>
-                <p>
-                  +971 55 995 8905
-                </p>
+                <h4>WhatsApp</h4>
+                <p>+971 55 995 8905</p>
               </div>
             </div>
+
+            {/* Working Hours */}
             <div className="cblock">
-              <div className="cblock-title">
-                Working Hours
+              <div className="cblock-title">Working Hours</div>
+              <div className="trow">
+                <span className="td">Monday – Friday</span>
+                <span className="th">9:00 AM – 6:00 PM</span>
               </div>
               <div className="trow">
-                <span className="td">
-                  Monday – Friday
-                </span>
-                <span className="th">
-                  9:00 AM – 6:00 PM
-                </span>
+                <span className="td">Saturday</span>
+                <span className="th">10:00 AM – 4:00 PM</span>
               </div>
               <div className="trow">
-                <span className="td">
-                  Saturday
-                </span>
-                <span className="th">
-                  10:00 AM – 4:00 PM
-                </span>
-              </div>
-              <div className="trow">
-                <span className="td">
-                  Sunday
-                </span>
-                <span className="tcl">
-                  Closed
-                </span>
+                <span className="td">Sunday</span>
+                <span className="tcl">Closed</span>
               </div>
             </div>
+
+            {/* Social Follow */}
             <div className="cblock">
-              <div className="cblock-title">
-                Follow Us
-              </div>
+              <div className="cblock-title">Follow Us</div>
               <div className="ft-social">
+                {/* Facebook */}
                 <a href="https://www.facebook.com/profile.php?id=61575559854140" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
                   <svg className="social-ico fb" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="currentColor" d="M14 8.6V6.9c0-.8.2-1.3 1.4-1.3H17V2.3c-.8-.1-1.7-.2-2.5-.2-2.6 0-4.4 1.6-4.4 4.5v2H7.2V12h2.9v9.9H14V12h2.8l.4-3.4H14z" />
                   </svg>
                 </a>
+                {/* Instagram */}
                 <a href="https://www.instagram.com/ibcstudio_uae/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
                   <svg className="social-ico ig" viewBox="0 0 24 24" aria-hidden="true">
                     <defs>
@@ -176,11 +158,13 @@ export default function ContactPage() {
                     <circle cx="17.4" cy="6.6" r="1.35" fill="#fff" />
                   </svg>
                 </a>
+                {/* LinkedIn */}
                 <a href="https://www.linkedin.com/company/ibcstudiouae/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                   <svg className="social-ico in" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="currentColor" d="M6.7 8.9H3.2v11.4h3.5V8.9zM5 3.3a2 2 0 1 0 0 4.1 2 2 0 0 0 0-4.1zm15.8 10.5c0-3.1-1.7-5.2-4.4-5.2-1.7 0-2.7.9-3.1 1.7h-.1V8.9H9.9v11.4h3.5v-5.6c0-1.5.3-3 2.2-3 1.8 0 1.8 1.7 1.8 3.1v5.5h3.5v-6.5z" />
                   </svg>
                 </a>
+                {/* WhatsApp */}
                 <a href="https://wa.me/971559958905" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
                   <svg className="social-ico wa" viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="currentColor" d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.4 21.9l5.2-1.2A9.7 9.7 0 1 0 12 2.2zm0 17.7c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3 .7.7-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.5-5.9c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3z" />
@@ -189,93 +173,10 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <ContactForm className="cform reveal" id="contact-form" action="mailto:info@ibcstudio.com" method="post" encType="text/plain">
-            <h2>
-              Send an Enquiry
-            </h2>
-            <p>
-              Fill in the form and we'll be in touch within 24 hours.
-            </p>
-            <div className="frow">
-              <div className="fg">
-                <label htmlFor="first-name">
-                  First Name
-                </label>
-                <input id="first-name" name="first_name" type="text" autoComplete="given-name" placeholder="Your first name" required />
-              </div>
-              <div className="fg">
-                <label htmlFor="last-name">
-                  Last Name
-                </label>
-                <input id="last-name" name="last_name" type="text" autoComplete="family-name" placeholder="Your last name" required />
-              </div>
-            </div>
-            <div className="fg">
-              <label htmlFor="email">
-                Email Address
-              </label>
-              <input id="email" name="email" type="email" autoComplete="email" placeholder="your@email.com" required />
-            </div>
-            <div className="fg">
-              <label htmlFor="phone">
-                Phone / WhatsApp
-              </label>
-              <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="+971 55 291 2810" required />
-            </div>
-            <div className="fg">
-              <label htmlFor="company">
-                Company Name
-              </label>
-              <input id="company" name="company" type="text" autoComplete="organization" placeholder="Your company" />
-            </div>
-            <div className="fg">
-              <label htmlFor="service">
-                Service of Interest
-              </label>
-              <select id="service" name="service" required>
-                <option value="">
-                  Select a service
-                </option>
-                <option>
-                  Audio Production
-                </option>
-                <option>
-                  Video Production
-                </option>
-                <option>
-                  Photography
-                </option>
-                <option>
-                  AI Production
-                </option>
-                <option>
-                  {"Digital & Development"}
-                </option>
-                <option>
-                  Motion Graphics / VR / AR
-                </option>
-                <option>
-                  IBC Intelligence
-                </option>
-                <option>
-                  Multiple Services
-                </option>
-                <option>
-                  General Enquiry
-                </option>
-              </select>
-            </div>
-            <div className="fg">
-              <label htmlFor="project">
-                Tell Us About Your Project
-              </label>
-              <textarea id="project" name="project" rows="4" placeholder="Describe your project, goals, timeline, and any specific requirements..." required />
-            </div>
-            <button className="fsub" type="submit">
-              Send Enquiry →
-            </button>
-            <p className="form-status" role="status" aria-live="polite" />
-          </ContactForm>
+          
+          {/* EmailJS Integrated Client Form Component */}
+          <ContactForm />
+          
         </div>
       </main>
     </div>
