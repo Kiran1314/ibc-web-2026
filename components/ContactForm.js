@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
-// Assuming you are using react-toastify based on your snippet
 import { toast } from 'react-toastify'; 
 
 export default function ContactForm() {
@@ -13,32 +11,35 @@ export default function ContactForm() {
   const [company, setCompany] = useState('');
   const [service, setService] = useState('');
   const [project, setProject] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const notify = () => toast("Email sent successfully!");
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    const serviceId = 'service_qndsxyv';
-    const templateId = 'template_y8vc6mo';
-    const publicKey = 'uo5jzZ8z_im3yAOGc';
-
-    // Map your form fields to your EmailJS variables
-    const templateParams = {
-      from_name: `${firstName} ${lastName}`,
-      from_email: email,
-      to_name: 'IBC',
-      subject: service || 'General Enquiry',
-      mobile: phone,
-      message: `Company: ${company || 'N/A'}\n\nProject Details:\n${project}`,
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      company,
+      service,
+      project
     };
 
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('Email sent successfully', response);
-        notify();
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Email sent successfully!");
         
-        // Reset form after successful submission
+        // Reset form
         setFirstName('');
         setLastName('');
         setEmail('');
@@ -46,11 +47,15 @@ export default function ContactForm() {
         setCompany('');
         setService('');
         setProject('');
-      })
-      .catch((error) => {
-        console.error('Error sending email', error);
-        toast.error('Failed to send email. Please try again.');
-      });
+      } else {
+        toast.error("Failed to send email. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -63,9 +68,7 @@ export default function ContactForm() {
           <label htmlFor="first-name">First Name</label>
           <input 
             id="first-name" 
-            name="first_name" 
             type="text" 
-            autoComplete="given-name" 
             placeholder="Your first name" 
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -76,9 +79,7 @@ export default function ContactForm() {
           <label htmlFor="last-name">Last Name</label>
           <input 
             id="last-name" 
-            name="last_name" 
             type="text" 
-            autoComplete="family-name" 
             placeholder="Your last name" 
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -91,9 +92,7 @@ export default function ContactForm() {
         <label htmlFor="email">Email Address</label>
         <input 
           id="email" 
-          name="email" 
           type="email" 
-          autoComplete="email" 
           placeholder="your@email.com" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -105,9 +104,7 @@ export default function ContactForm() {
         <label htmlFor="phone">Phone / WhatsApp</label>
         <input 
           id="phone" 
-          name="phone" 
           type="tel" 
-          autoComplete="tel" 
           placeholder="+971 55 291 2810" 
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
@@ -119,9 +116,7 @@ export default function ContactForm() {
         <label htmlFor="company">Company Name</label>
         <input 
           id="company" 
-          name="company" 
           type="text" 
-          autoComplete="organization" 
           placeholder="Your company" 
           value={company}
           onChange={(e) => setCompany(e.target.value)}
@@ -132,7 +127,6 @@ export default function ContactForm() {
         <label htmlFor="service">Service of Interest</label>
         <select 
           id="service" 
-          name="service" 
           value={service}
           onChange={(e) => setService(e.target.value)}
           required
@@ -154,7 +148,6 @@ export default function ContactForm() {
         <label htmlFor="project">Tell Us About Your Project</label>
         <textarea 
           id="project" 
-          name="project" 
           rows="4" 
           placeholder="Describe your project, goals, timeline, and any specific requirements..." 
           value={project}
@@ -163,11 +156,9 @@ export default function ContactForm() {
         />
       </div>
       
-      <button className="fsub" type="submit">
-        Send Enquiry →
+      <button className="fsub" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? 'Sending...' : 'Send Enquiry →'}
       </button>
-      
-      <p className="form-status" role="status" aria-live="polite" />
     </form>
   );
 }
