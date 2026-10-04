@@ -19,7 +19,7 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const serviceId = 'service_0wt2qvw';
+    const serviceId = 'service_qndsxyv';
     const templateId = 'template_y8vc6mo';
     const publicKey = 'uo5jzZ8z_im3yAOGc';
 
