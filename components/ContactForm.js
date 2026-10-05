@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify'; 
+import ReCAPTCHA from "react-google-recaptcha";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactForm() {
@@ -193,7 +194,11 @@ export default function ContactForm() {
             required 
           />
         </div>
-        
+        <div className="mb-3">
+        <ReCAPTCHA sitekey="6LeFuosUAAAAAMHGuHM25M14zdNbTz83ADNMG9AE"  onChange={onChange} /> 
+
+        </div>
+
         <button className="fsub" type="submit" disabled={isSubmitting}>
           {isSubmitting ? 'Sending...' : 'Send Enquiry →'}
         </button>

@@ -11,7 +11,7 @@ export const metadata = {
   title: 'Audio-Video Production House Dubai | IBC Studio',
   description: 'Discover the best audio-video production house in Dubai. We offer top-notch digital media creation, professional audio recording, and production services.',
   keywords: [
-     'audio video company in dubai', 'production house in dubai', 'media production company in dubai', 'best production company in dubai'
+     'best audio recording studio in dubai', 'audio video company in dubai', 'production house in dubai', 'media production company in dubai', 'best production company in dubai'
   ],
   openGraph: {
     type: 'website',  
