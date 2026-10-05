@@ -324,7 +324,7 @@ export default function ContactForm() {
         <div className="mb-3">
 
           <ReCAPTCHA
-            sitekey="6LeFuosUAAAAAMHGuHM25M14zdNbTz83ADNMG9AE"
+            sitekey="6LdWP-AtAAAAADnSZ8Vmt_j2Q7xDPSn2sM0FlxtZ"
             onChange={handleCaptchaChange}
             onExpired={() => setCaptchaToken(null)}
             onErrored={() => setCaptchaToken(null)}
